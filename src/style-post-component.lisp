@@ -16,7 +16,7 @@
 		   (<ucw:select :accessor stylesheet
 				(with-open-file (stream 
 						 (merge-pathnames (concatenate 'string "configfiles/stylesheet" (layout st) ".dat") 
-								  (asdf:component-pathname (asdf:find-system :ws.ikki.yoi))))
+								  (asdf:component-pathname (asdf:find-system :yoi))))
 				  (loop for line = (read-line stream nil 'EOF)
 					until (eq line 'EOF)
 					do (progn			       
