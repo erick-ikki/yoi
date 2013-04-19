@@ -1,0 +1,14 @@
+#+TITLE:  Yoi TODO list.
+#+TAGS: project
+#+TYP_TODO: TODO MAYBE(m) CALENDAR(c) WAITING(w) NEXT(n) DONE
+#+STARTUP: hidestars
+#+STARTUP: showall
+
+
+* NEXT Common Lisp code to create dB tables.
+ - Using Postmodern.
+
+* WAITING  ER Schema of the dB
+
+* WAITING Translate all the comments on code to english.
+
