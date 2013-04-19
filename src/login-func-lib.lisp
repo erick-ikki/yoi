@@ -3,16 +3,17 @@
 ;;; Funcion que busca el usuario y contraseña en la base de datos y los compara 
 
 (defun find-user (iduser password)
+  (db-disconnection)
   (db-connection)
   (let ((usr1 nil)
         (pwd1 nil))
     ;; Se ejecuta el query para seleccionar el usuario y contraseña
-    (doquery (:select 'usuario 'contraseña
+    (doquery (:select 'user 'password
                       :from 'login
                       :where
                       (:and
-                       (:= 'usuario iduser)
-                       (:= 'contraseña password)))
+                       (:= 'user iduser)
+                       (:= 'password password)))
         (usr pwd)
       (setf usr1 usr)
       (setf pwd1 pwd))
@@ -21,5 +22,5 @@
     (if(and
 	(equal usr1 iduser)
 	(equal pwd1 password))
-       T ; Regresa el resultado como verdadero
-       nil)))  ; Regresa el resultado como falso
+       T 
+       nil))) 

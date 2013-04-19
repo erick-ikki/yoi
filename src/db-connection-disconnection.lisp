@@ -17,7 +17,7 @@
 
 ;;; Funcion que realiza la conexion a postgres 
 (defun postgres-connection (dbuser dbpwd)
-  (postmodern:connect-toplevel "tlatoani000" dbuser dbpwd "localhost"))
+  (postmodern:connect-toplevel "yoi_db" dbuser dbpwd "localhost"))
 
 ;;; Funcion que realiza la desconexion de la base de datos.
 (defun db-disconnection ()

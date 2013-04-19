@@ -5,10 +5,12 @@
 #+STARTUP: showall
 
 
-* NEXT Common Lisp code to create dB tables.
+* DONE Common Lisp code to create dB tables.
+  CLOSED: [2013-04-19 vie 18:47]
  - Using Postmodern.
 
-* WAITING  ER Schema of the dB
+* DONE ER Schema of the dB
+  CLOSED: [2013-04-19 vie 18:47]
 
 * WAITING Translate all the comments on code to english.
 

@@ -67,17 +67,26 @@
 					      ))))
 			   (<:br)
 			   (<:br)
-			   (<:as-html (format nil "Login as: ~A" $usersession))
-			   (<:br)(<:br)
+			   (<:as-html "Logged as: ")
+			   (<:br)
+			   (<:as-html  $usersession)
+			   (<:br)
 			   (<:h3
 			    (<:as-html (format nil "Links"  )))
-			   (<:a :href "http://www.Debian.org" :target "_blank"
-				(<:img :src "/static/debian2.jpg" :width 180 :height 100))
-			   (<:br)
+			   
 			   (<:a :href "http://common-lisp.net/" :target "_blank"
-				(<:img :src "/static/logol.jpg" :width 160 :height 140))
+				(<:img :src "/static/img/lisp-emblem.png"))
+
+			   (<:br)
+			   (<:br)
+
+			   (<:a :href "http://www.Debian.org" :target "_blank"
+				(<:img :src "/static/img/debian.png"))
+
+			   
 			   (<:br)(<:br)
-			   (<:img :src "/static/logol1.jpg" :width 190 :height 200)))))
+			   ;			   (<:img :src "/static/logol1.jpg" :width 190 :height 200)
+			   ))))
 
 #|
 Se define el componente "menu-component" que se le aplica un estilo y de crean los menus que contendra el blog.
