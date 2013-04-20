@@ -1,1 +1,1 @@
-This is the stub README.txt for the "blog" project.
+Please look at the doc/ directory.
