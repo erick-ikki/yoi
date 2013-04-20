@@ -10,7 +10,7 @@
    ;; El el slot >> body << del componente se crea una instancia del componente "main-componente"
    :body (make-instance 'blog-head-2col-footer)
    ;; Se le pone un titulo a la pagina.
-   :title "My Blog: "
+   :title "My Blog"
    ;; Se incluye la ruta del archivo "blog.css" de la hoja de estilo.
    :stylesheet '("static/fixed-blog-blue-layout1.css")
    ;; Se incluye la ruta del archivo "parenscript.js" para las funciones de javascript.

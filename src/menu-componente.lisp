@@ -38,7 +38,7 @@
 					(db-disconnection)
 					
 ;;;;;;;;;;;;;
-					(if (loggen-in)
+					(if (logged-in)
 					    (progn 
 					      (<:h1(<:as-html (format nil "Admin" )))
 					      (<:li :class "limenu" 

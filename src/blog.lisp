@@ -27,7 +27,7 @@
 							(read-first-line-file "configfiles/layout.dat")
 							"/"
 							(read-first-line-file "configfiles/layout-css.dat")))))
-	(call 'blog-window :stylesheet *style* ))))
+	(call 'blog-window :stylesheet *style*))))
 
 
 ;;; Se crea un compoente para la aplicacion del blog, este componente hereda de "standard-window-component"
@@ -38,7 +38,7 @@
    ;; El el slot >> body << del componente se crea una instancia del componente "main-componente"
    :body (make-instance 'main-component)
    ;; Se le pone un titulo a la pagina.
-   :title "My Blog: "
+   :title "My Blog"
    ;; Se incluye la ruta del archivo "blog.css" de la hoja de estilo.
    :stylesheet '("static/blog.css")
    ;; Se incluye la ruta del archivo "parenscript.js" para las funciones de javascript.

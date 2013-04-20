@@ -134,7 +134,7 @@
 
 ;;; funcion que revisa si existe una sesion del usuario en concreto.
 
-(defun loggen-in ()
+(defun logged-in ()
   (when (context.session *context*)
     (get-session-value :usersession)))
 

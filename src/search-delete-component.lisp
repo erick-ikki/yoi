@@ -12,7 +12,7 @@
     (<:div :id "wrapper"
 	   (<:div :id "contentwrap"
 		  (<:div :id "content"
-			 (if (loggen-in)
+			 (if (logged-in)
 			     (progn
 			       (<:div :id "post1"
 				      ;; Se crea un formulario para que el usuario introduzca el id del post y lo pueda buscar

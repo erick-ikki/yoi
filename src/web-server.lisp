@@ -90,7 +90,25 @@
 
 
 (defentry-point "admin.ucw" (:application *blog*) ()
-  (if  (loggen-in)
+  (if (equal (read-from-string (read-first-line-file "configfiles/layout.dat")) 1)
+      (progn
+	(setf *style* 	(list (concatenate 'string 
+					   "static/"
+					   (concatenate 'string 
+							*layout-dir*
+							(read-first-line-file "configfiles/layout.dat")
+							"/"
+							(read-first-line-file "configfiles/layout-css.dat"))))))
+      (progn
+	(setf *style* 	(list (concatenate 'string 
+					   "static/"
+					   (concatenate 'string 
+							*layout-dir*
+							(read-first-line-file "configfiles/layout.dat")
+							"/"
+							(read-first-line-file "configfiles/layout-css.dat")))))))
+
+  (if  (logged-in)
        (call 'blog-window :stylesheet *style* )
        (call 'login :stylesheet *style* )))
 
