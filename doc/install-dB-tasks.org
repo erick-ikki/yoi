@@ -4,72 +4,64 @@
   
 ** Connect to Postgres
 
-  1.- En una terminar o consola escribimos lo siguiente su y oprimimos enter  y a continuacion nos pediara la contraseña
-      del root o super usuario.
+  1. From terminal/console, we need to be root (It depends on your PostgreSQL setup):
 
-      Ejemplo :
       #+begin_example
       user@foo:~$ su
       Contraseña:
       
-      root@foo:/home/user#  <<--- el símbolo # nos indica que estamos como administradores o como super usuario.
+      root@foo:/home/user#  <<---The # symbol tell us we are root now.
       #+end_example
 
-  2.- El siguiente paso es cambiarnos de usuario , el usuario administrador de Postgresql es postgres, entonces hacemos
-      lo siguiente su - postgres y oprimimos enter, listo ya estamos como el usuario postgres.
+  2. Next, we change the user to the postgres user:
       
-      Ejemplo:
       #+begin_example
       root@foo:/home/user# su - postgres
       postgres@foo:~$
       #+end_example
 
-  3.- Ahora nos conectamos a la terminal interactiva de postgres tecleando lo siguiente psql y oprimimos un enter.
+  3. Then we need to connect to the psql console;
 
-      Ejemplo:
       #+begin_example
       postgres@foo:~$ psql
       
       psql (9.1.6)
       Digite «help» para obtener ayuda.
 
-      postgres=#  <<-- Aquí nos indica que ya estamos en la terminal de postgres.
+      postgres=#  <<-- Here we can see we are now into psql console.
       #+end_example
 
 ** Create yoi_db and user.
-  4.- Crear la base de datos, tecleamos el comando siguiente.
+  4. Create the data base
       #+begin_example
       CREATE DATABASE yoi_db;
       #+end_example
 
-  5.-Crear el usuario de base de datos.
+  5. Create the user with a password:
    #+begin_example
      CREATE USER yoi_dbuser with password 'd3f4ulty01p4ss$';
    #+end_example
 
-  6.-Cambiar de propietario la base de datos impuestofacil
+  6. Change the dB owner:
      #+begin_example
      ALTER DATABASE yoi_db OWNER TO yoi_dbuser;
      #+end_example
 
 
-  7.- Para conectarnos a la base de datos impuestofacil tecleamos el siguiente comando
+  7. Coonnect to the dB:
      
       \c yoi_db
 
-      Ejemplo:
+
       #+begin_example
       postgres=# \c yoi_db
       Ahora está conectado a la base de datos «yoi_db» con el usuario «postgres».
-      yoi_db=# <<-- Aqui nos indica que ya estamos adentro de la base de datos yoi_db.     
+      yoi_db=# <<-- As we can see now we are connected to the yoi_db dB.
       #+end_example
 
 ** dB tables creation.
    
-   Las relaciones de la base de datos se encuenta en el component /postmodern-tables-creation.lisp/, para crear las
-   relaciones es necesario ejecutar las instrucciones del archivo.
-
-
+   The definitions and code to create the dB tables are on the file /postmodern-tables-creation.lisp/, to create the tables in the dB we need to execute only one time the code in the file from the REPL, from inside the ws.ikki.yoi package. 
 
 * Create the admin user
 
