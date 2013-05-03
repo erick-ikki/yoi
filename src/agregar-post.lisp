@@ -30,6 +30,7 @@
 					    (<:as-html "Category : ")
 					    (<ucw:select :accessor category 
 							 :class "inputaddpost"
+							 (db-disconnection)
 							 (db-connection) ; Se realiza la conexion a la base de datos
 ;; Se ejecuta el query para ver las temas del post en un objeto select
 							 (doquery (:select 'topic_id 

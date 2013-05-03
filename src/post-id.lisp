@@ -15,6 +15,7 @@
    (<:div :id "wrapper"
 	  (<:div :id "contentwrap"
 		 (<:div :id "content"
+			(db-disconnection)
 			(db-connection) ; Se conecta a la base de datos
 ;; Se ejecuta el query para seleccionar el post con el id asociado
 			(doquery   (:select 'tpost_id
@@ -39,6 +40,7 @@
    (<:div :id "wrapper"
 	  (<:div :id "contentwrap"
 		 (<:div :id "content"
+			(db-disconnection)
 			(db-connection) ; Se conecta a la base de datos
 ;; Se ejecuta el query para seleccionar el post con el id asociado
 			(doquery   (:select 'tpost_id

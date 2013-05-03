@@ -8,6 +8,7 @@
   (<:form  
    (<:div :id "contentwrap"
 	  (<:div :id "content"
+		 (db-disconnection)
 		 (db-connection) ; Se realiza la conexion a la base de datos
 		 ;; Se ejecuta un select a la base de datos con los ultimos 5 post ordenados descendentemente
 		 (doquery   (:limit   (:order-by   (:select 'tpost_id

@@ -13,6 +13,7 @@
    (<:div :id "wrapper"
 	  (<:div :id "contentwrap"
 		 (<:div :id "content"
+			(db-disconnection)
 			(db-connection) 
 			(doquery      (:select 'tpost_id
 					       'post_name 

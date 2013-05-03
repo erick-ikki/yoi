@@ -46,6 +46,7 @@
 				      (<:as-html "Category : ")
 				      (<ucw:select :accessor edit-category 
 						   :class "inputaddpost"
+						   (db-disconnection)
 						   (db-connection)
 						   (doquery (:select 'topic_id
 								     'topic_name

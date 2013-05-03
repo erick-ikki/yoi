@@ -1,6 +1,7 @@
 (in-package #:ws.ikki.yoi)
 
 (defun add-topic-on-db (tname tdescription imgpath)
+  (db-disconnection)
   (db-connection) ; Se realiza la conexion a la base de datos
   (query (:insert-into 'topics
 	  :set	 

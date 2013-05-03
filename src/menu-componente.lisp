@@ -23,7 +23,8 @@
 					(<:li :class "limenu" 
 					      (<ucw:a :class "amenu"
 						      :action (call-component $contenido (make-instance 'show-all-abstract)) "Home"))
-					
+
+					(db-disconnection)
 					(db-connection)
 					
 					(doquery (:select 'topic_id
