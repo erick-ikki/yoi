@@ -5,7 +5,6 @@
   ;; Se ejecuta el query para guardar la informacion en la base de datos.
   (query (:insert-into 'topic_posts
 	  :set
-	  'tpost_id (:nextval "tpost_id") ; Se ejecuta una secuencia con el nombre de tpost_id
 	  'topic_id topic-id 
 	  'creation_time  creation-time
 	  'update_time update-time
