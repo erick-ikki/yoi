@@ -15,7 +15,9 @@
 		 (<:as-html (format nil "Menu" ))) 
 		;; Se crea un formulario que contendra los botones del menu y las ligas de interes.
 		(<ucw:form :function (constantly t)		    
-			   (<:img :src "/static/post1.png" :width 100 :height 120)
+			   (<:img :src "/static/img/lisplogo_fancy_128_trsp.png")
+			   (<:br)
+			   (<:br)
 			   (<:div :id "menu"
 				  (<:ul :id "menu"
 					(<:li :class "limenu" 

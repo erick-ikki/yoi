@@ -50,7 +50,7 @@
 		  (post_author
 		   :type   (varchar 255))
 		  (post_abstract
-		   :type   (varchar 255))
+		   :type   (varchar 2000))
 		  (post 
 		   :type (string))
 		  (post_views 
