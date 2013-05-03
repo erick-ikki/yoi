@@ -11,13 +11,14 @@
 (defmethod render ((self menus-component))  
   (<:div :id "leftcolumnwrap"
 	 (<:div :id "leftcolumn"
+		(<:br)		
+		(<:img :src "/static/img/lisplogo_fancy_128_trsp.png")
+		(<:br)
+
 		(<:h1
 		 (<:as-html (format nil "Menu" ))) 
 		;; Se crea un formulario que contendra los botones del menu y las ligas de interes.
 		(<ucw:form :function (constantly t)		    
-			   (<:img :src "/static/img/lisplogo_fancy_128_trsp.png")
-			   (<:br)
-			   (<:br)
 			   (<:div :id "menu"
 				  (<:ul :id "menu"
 					(<:li :class "limenu" 
@@ -78,7 +79,7 @@
 			    (<:as-html (format nil "Links"  )))
 			   
 			   (<:a :href "http://common-lisp.net/" :target "_blank"
-				(<:img :src "/static/img/lisp-emblem.png"))
+				(<:img :src "/static/img/lisp-emblem-trsp.png"))
 
 			   (<:br)
 			   (<:br)
