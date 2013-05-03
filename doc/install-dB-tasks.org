@@ -1,6 +1,6 @@
-#+Title: Install tasks on dB
+#+Title: Install tasks on dB.
 
-* PostgreSQL, Yoi dB creation
+* PostgreSQL, Yoi dB creation.
   
 ** Connect to Postgres
 
@@ -63,7 +63,7 @@
    
    The definitions and code to create the dB tables are on the file /postmodern-tables-creation.lisp/, to create the tables in the dB we need to execute only one time the code in the file from the REPL, from inside the ws.ikki.yoi package. 
 
-* Create the admin user
+* Create the admin user.
 
  - Load the system with quicklisp
  
@@ -76,3 +76,46 @@
   http://localhost:9090/admin.ucw
 
  
+
+* Set the right sequence in dB. 
+
+If you are doing a fresh, clean install, then you don't have to worry about this problem. So you just can safely skip this section.
+
+When you, for some reason, migrate your dB data, you need to set the sequences to their right value according to the las one used in your already existent information.
+
+For example, if I have 8 topics on my dB, then I migrate this data to a new location on a new dB, the table still has topic:id(s) from 1 to 8, and when I try to add another topic from Yoi, Postgres signals an error of duplicate key, because it tries to insert a topic_id with value 1 which already exists on the table.
+
+
+
+You need to instruct PostgreSQL to set the right sequence value, with something like this:
+
+ 1. know the highest value of the sequence, as easy as use an select on the table and key. 
+#+begin:example
+yoi_db=# SELECT topic_id from  topics;
+ topic_id 
+----------
+        1
+        3
+        4
+        5
+        2
+        6
+(6 filas)
+#+end_example
+The value is 6.
+2. Get the name of the sequence
+#+begin:example
+\d topics
+                                                 Tabla «public.topics»
+      Columna      |            Tipo             |                            Modificadores                            
+-------------------+-----------------------------+---------------------------------------------------------------------
+ topic_id          | integer                     | not null valor por omisión nextval('topics_topic_id_seq'::regclass)
+#+end_example
+The name is topics_topic_id_seq
+
+ 3. Update the value of the sequence:
+#+begin:example
+ SELECT pg_catalog.setval('topics_topic_id_seq', 6, true);
+#+end_example
+
+ 4. Now you can add new topics (In this case)
