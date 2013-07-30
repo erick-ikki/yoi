@@ -23,6 +23,3 @@
 ;;; Se define el symbol-macro $menus, que se le pasa el componente llamado "contenido" al slot >> body << de "standard-window-component"
 ;;; con el contexto de la sesion actual.
 (define-symbol-macro $contenido (contenido $body))
-
-
-

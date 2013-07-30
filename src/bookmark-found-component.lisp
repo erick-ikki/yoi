@@ -41,6 +41,7 @@
    (pie :component pie-component
 	:accessor pie)))
 
+
 (defmethod render ((self bookmark-found-component-lay)) 
   (<:div :id "wrapper"
 	 ;; Se hace visible el componente titulo en el navegador.

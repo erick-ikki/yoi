@@ -1,0 +1,91 @@
+@import url("estilo-ikkiware.css");
+@import url("reset.css");
+
+html,body
+{
+	 margin: 0px; 
+	 padding: 0; 
+	 background-color: white;
+	 width: 100%; 
+	 height: 100%;
+	 }
+#head-wrappers
+  {
+	width: 100%;
+	height: 100px; 
+	margin-left: 1px;
+   margin-right: 1px;
+	
+	}
+#contenetors 
+		{
+    	width: 100%; 
+	   height: 110%;
+	   }
+
+#menu-wrappers
+{
+	width: 100%;
+	height: 38px; 
+	background-color: #37B9C6;
+	overflow: hidden;
+	}
+
+#menups
+{
+width: 100%;
+height: 45px; 
+background-color: black;
+overflow: hidden;
+position: fixed; 
+}
+#menups ul 
+{
+list-style-type:none;
+
+width: 900px;
+margin-left: auto;
+margin-right: auto;
+position:relative;
+display:block;
+height:30px;
+font-size: 15px;
+font-family: "TitilliumWeb-Regular";
+margin:0 auto;
+padding:0;
+}
+
+#menups li 
+{
+display:block;
+float:left;
+margin:0;
+padding:0;
+}
+
+#menups li a 
+{
+float:left;
+text-decoration:none;
+height:21px;
+padding:9px 15px 0;
+color: white;
+
+}
+
+#menups li a:hover
+{  
+	color: white;
+	text-decoration:none;
+	box-shadow: 0px 0px 6px #515151;
+   border: .4em solid #37B9C6;
+}
+
+#body-wrappers
+  {
+	width: 100%;
+	height: 100%;
+	background-color: green;
+  }
+  
+

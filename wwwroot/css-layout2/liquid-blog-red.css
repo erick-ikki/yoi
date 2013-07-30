@@ -86,7 +86,17 @@ p {
          font-weight: bold;
          box-shadow: .3em .3em .3em #888888;
           }
-
+.boton {
+	
+	background-color:#37B9C6;
+	color: white;
+	font-family:arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	float: left;
+}
 /*
  _______   Presentacion de los posts  ____________________________
 */

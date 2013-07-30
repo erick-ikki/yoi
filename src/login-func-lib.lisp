@@ -1,6 +1,6 @@
 (in-package #:ws.ikki.yoi)
 
-;;; Funcion que busca el usuario y contraseña en la base de datos y los compara 
+;;; Funcion que busca el usuario y contraseña en la base de datos y lo compara 
 
 (defun find-user (iduser password)
   (db-disconnection)

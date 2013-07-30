@@ -20,3 +20,8 @@
 		     (idpost titulo  resumen autor fecha)
 		   (show-abstract idpost titulo resumen autor (my-date fecha)))
 		 (db-disconnection))))) ; Se realiza la desconexion de la base de datos
+
+
+
+
+   

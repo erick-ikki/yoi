@@ -1,5 +1,5 @@
 (in-package #:ws.ikki.yoi)
-
+;; Se crea un componente para realizar el loguin
 (defcomponent login-post () 
   ())
 
@@ -17,4 +17,4 @@
 				  (<:label :for "lpwd" :class "llogin" "Password")
 				  (<:br)
 				  (<ucw:input :type "password" :accessor pwd :class "inputlogin"))
-			     (<ucw:submit :value " Login  >>" :class "blogin" :action (check-login user pwd)))))))
+			     (<ucw:submit :value " Login -->" :class "blogin" :action (check-login user pwd)))))))

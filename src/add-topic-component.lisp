@@ -2,7 +2,8 @@
 
 ;;; Componente para que el usuario agregue un tema para los post
 
-(defcomponent add-topic ()())
+(defcomponent add-topic ()
+  ())
 
 ;;; Metodo para ver el componente "add-topic
 
@@ -27,14 +28,14 @@
 							:name "tname"
 							:accessor topic-name
 							:value ""
-							:class "inputaddtopic") 
+							:class "inputadd.topic") 
 					    (<:br)
 					    (<:as-html "Topic Descrip.:")(<:&nbsp) (<:&nbsp)
 					    (<ucw:input :type "text"
 							:name "tdescription"
 							:accessor topic-description
 							:value ""
-							:class "inputaddtopic") 
+							:class "inputaddtopic" )
 					    (<:br)
 					    (<:as-html "Image Path : ")(<:&nbsp) (<:&nbsp) (<:&nbsp)  (<:&nbsp)  (<:&nbsp) 
 					    (<ucw:input :type "text"
@@ -47,4 +48,4 @@
 								:class "inputaddtopic"
 								:style "cursor:pointer"                               
 								;; Esta accion  envia la informacion para que se almacene en la base de datos
-								:action (add-topic-db topic-name topic-description image-path)))))))))))))
+								:action (add-topic-db topic-name topic-description image-path)))) )))))))))

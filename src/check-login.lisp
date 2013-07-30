@@ -7,6 +7,6 @@
       (progn
 	;; Si el resultado de la funcion find-user es verdadero se le asigna una sesion al usuario y se llama al componente "main-component"
 	(setf $usersession user)
-	(call 'main-component ))
+	(call-as-window 'layout-principal))
       ;; Si el resultado de la funcion find-user es falso  se llama al componente "login-post"
       (call 'login-post)))

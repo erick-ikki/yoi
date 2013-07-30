@@ -7,8 +7,8 @@
   (db-connection)
 
   (query (:insert-into 'login
-	  :set 'user "The user name you want."
-	       'password "The password you choose."))
+	  :set 'user "marko"
+	       'password "123456"))
 
 
   (db-disconnection))
