@@ -88,7 +88,17 @@ p {
          font-weight: bold;
          box-shadow: .3em .3em .3em #888888;
           }
-
+.boton {
+	
+	background-color:#37B9C6;
+	color: white;
+	font-family:arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	float: left;
+}
 /*
  _______   Presentacion de los posts  ____________________________
 */
@@ -150,6 +160,12 @@ p {
              font-size: 28pt;
              text-align: center;             
              color: red;
+             }
+  .spaddpost2 {
+             align: center;
+             font-size: 18pt;
+             text-align: center;             
+             color: green;
              }
 
 /*
@@ -263,7 +279,7 @@ ______________   Login form  ______________________________________
 
     margin:0 6em; 6em; 0;
     text-align:center;
-    width:80%;
+    width:90%;
     margin: 2em 0 1em 0;
 }
 

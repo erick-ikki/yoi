@@ -2,7 +2,7 @@
 
 body {
   font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   color:#333;
 }
 
@@ -19,6 +19,11 @@ p {
     width: 1000px;
     float: left;
     margin: 0 auto;
+}
+
+#head-wrapper{
+width: 1024px;
+
 }
 
 #header {
@@ -46,14 +51,19 @@ p {
 }
 
 #leftcolumnwrap {
-    width: 150px;
-    float: left;
-    margin: 0 auto;
+     	margin-left: 1px;
+    	margin-right: 1px;
+    	width: 150px;
+    	float: left;
+    	margin: 0 auto;
 }
 
 #leftcolumn {
+	width: 150px;
+ margin-left: 1px;
+    margin-right: 1px;  
   background: white;
-  margin: .5em; 
+  margin: .5em;
 }
 
 #footerwrap {
@@ -88,7 +98,17 @@ p {
          font-weight: bold;
          box-shadow: .3em .3em .3em #888888;
           }
-
+.boton {
+	
+	background-color:#37B9C6;
+	color: white;
+	font-family:arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	float: left;
+}
 /*
  _______   Presentacion de los posts  ____________________________
 */
@@ -125,7 +145,7 @@ p {
            }
 
 /*
- _______   Para agragar posts  ________________________________
+ _______   Para agregar posts  ________________________________
 */
 .labeladdpost {
                 font-size: 18pt;
@@ -227,6 +247,12 @@ p {
              text-align: center;             
              color: #3399ff;
              }
+    .spaddpost2 {
+             align: center;
+             font-size: 18pt;
+             text-align: center;             
+             color: blue;
+             }
 .addtitle {
             align: center;
             text-align: center;
@@ -261,8 +287,8 @@ ______________   Login form  ______________________________________
 
     margin:0 6em; 6em; 0;
     text-align:center;
-    width:80%;
-    margin: 2em 0 1em 0;
+    width: 100%;
+    margin: 2.5em 0 1em 0;
 }
 
 .loginform {
@@ -321,7 +347,7 @@ ______________   Login form  ______________________________________
 */
 
  
-#menu {    
+#menus {    
     margin: 0em;
     padding: 0em;
     width: 8em;

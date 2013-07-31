@@ -1,5 +1,5 @@
 (in-package #:ws.ikki.yoi)
-
+;; Se muestra el componente para ver que tipo de estilo elige el usuario.
 (defcomponent style-post ()
   ((layout :accessor layout
 	   :initarg :layout)))
@@ -11,8 +11,9 @@
      :function (constantly t)
      (<:div :id "contentwrap"
 	    (<:div :id "content"  
-		   (<:h1  (<:as-html "Choose your Style.") )
+		   (<:h1  (<:as-html "Choose your Style."))
 		   (<:br)
+
 		   (<ucw:select :accessor stylesheet
 				(with-open-file (stream 
 						 (merge-pathnames (concatenate 'string "configfiles/stylesheet" (layout st) ".dat") 
@@ -20,7 +21,9 @@
 				  (loop for line = (read-line stream nil 'EOF)
 					until (eq line 'EOF)
 					do (progn			       
-					     (<ucw:option :value line (<:as-html line ) )))))
+					     (<ucw:option :value line (<:as-html line))))))
+
 		   (<ucw:submit :value "Set Style >>"		 
 				:style "cursor:pointer"				 			    
 				:action (answer stylesheet)))))))
+			

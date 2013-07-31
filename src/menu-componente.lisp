@@ -1,10 +1,10 @@
 
 (in-package #:ws.ikki.yoi)
 
-
 ;;; Definicion del componente para el menu del blog
 
-(defcomponent menus-component ()())
+(defcomponent menus-component ()
+  ())
 
 ;;; Con este metodo se hace visible el componente en el navegador.
 
@@ -14,34 +14,33 @@
 		(<:br)		
 		(<:img :src "/static/img/lisplogo_fancy_128_trsp.png")
 		(<:br)
-
 		(<:h1
 		 (<:as-html (format nil "Menu" ))) 
 		;; Se crea un formulario que contendra los botones del menu y las ligas de interes.
 		(<ucw:form :function (constantly t)		    
-			   (<:div :id "menu"
-				  (<:ul :id "menu"
+			   (<:div :id "menus"
+				  (<:ul :id "menus"
 					(<:li :class "limenu" 
+					      ;;se hace una instancia del componente show-all-abstract de los topics
 					      (<ucw:a :class "amenu"
 						      :action (call-component $contenido (make-instance 'show-all-abstract)) "Home"))
 
 					(db-disconnection)
 					(db-connection)
-					
+					;;Se realiza un query para seleccionar los el id y el nombre de los topics
 					(doquery (:select 'topic_id
 							  'topic_name
 							  :from 'topics)
 					    (topic-id topic-name)
+					  ;;Se hace la comparacion del slot de show-by-topic con el topic-id y lo muestra en pantalla con (<:as-html topic-name)
 					  (<:li :class "limenu" 
-						(<ucw:a :class "amenu"
-							:action
-							(call-component
-							 $contenido 
-							 (make-instance
-							  'show-by-topic :topic-id topic-id)) (<:as-html topic-name ) )))
+						(<ucw:a :class "amenu" :action (call-component 
+										$contenido 
+										(make-instance
+										 'show-by-topic :topic-id topic-id)) (<:as-html topic-name ) )))
 					(db-disconnection)
 					
-;;;;;;;;;;;;;
+					;;Se condiciona si el usuario esta en login puede hacer las operaciones de admin
 					(if (logged-in)
 					    (progn 
 					      (<:h1(<:as-html (format nil "Admin" )))
@@ -66,10 +65,17 @@
 					      (<:li :class "limenu" 
 						    (<ucw:a :class "amenu"
 							    :action (set-layout-and-stylesheet) "Stylesheet"))
-					      
-					      
-					      ))))
-			   (<:br)
+					      (<:li :class "limenu" 
+						    (<ucw:a :class "amenu"
+							    :action (call-as-window 'layout-principal
+										    :body (make-instance 'main-principal)) "Salir del blog")))
+
+					    ;;Si no esta en login le manda una liga para poder entrar al sistema
+					    (progn 
+					      (<:span :class "spaddpost2"
+						      (<:br )
+						      (<:a :href "http://localhost:9090/admin.ucw" :class "texto" " login--> "))))))
+			  
 			   (<:br)
 			   (<:as-html "Logged as: ")
 			   (<:br)
@@ -99,3 +105,4 @@ Se han creado 3 botones.
 >>  El segundo botón  tiene la funcionalidad de agregar un post.
 >>  El tercer boton tiene la funcionalidad de editar un post, que primero se búsca el posta a editar.
 |#
+

@@ -3,7 +3,8 @@
 ;_________________________________________________________________________________________________________________________________________
 ;;; Definicion del componente para agregar el post
 
-(defcomponent add-post () ())
+(defcomponent add-post  () 
+  ())
 
 ;;; Metodo render para ver el componente de agregar el post
 

@@ -61,8 +61,7 @@
 	   (<:p 
 	    (<:as-html (format nil "ID  [ ~A ]" id   ))
 	    (<:h2  :style "text-align: center;"
-		   (<ucw:a :action (call-component $contenido (make-instance 'show-all-abstract)) "Back")
-		   (<:br))
+		   (<ucw:a :action (call-component $contenido (make-instance 'show-all-abstract)) "Back")		   (<:br))
 	    (setf bookmark-link (concatenate 'string "/showpost.ucw?id=" (write-to-string id)))
 	    
 	    (<:a :href  bookmark-link  "Link bookmark: "))))) 
@@ -151,6 +150,17 @@
     (close file) 
     line-inf))
 
+(defun read-second-line-file (filename)
+  (let ((line-inf nil)
+	(file nil))
+    (setq file (open (merge-pathnames filename (asdf:component-pathname (asdf:find-system :yoi)))
+		     :direction 
+		     :input))  
+    (setf line-inf (read-line file))  
+    (close file) 
+    line-inf))
+
+
 (defun write-file (filename content) ; content and name are both strings 
         (with-open-file 
 	    ;;  creating a stream object named name
@@ -159,3 +169,72 @@
 		     :if-exists :supersede
 		     :if-does-not-exist :create ) ;  creates a file namend name if it does not already exist,
        (format stream content))); content is the input that is written to the file via the format function
+
+
+;;---> Funcion que muestra la pagina ikkiware con su contenido.
+
+(defun preview-edit-show-page (contenido)
+  (let ((id-page ))
+    (defparameter *cont* contenido) ;se declara una variable global para mostrar el contenido
+    (<ucw:form  
+     :function (constantly t)
+     (<:div :id "post1"
+	    (<:div :class "post" 
+		   (<:div (<:as-is (format nil "~a" contenido))))
+	    (<ucw:submit  :id "idsubmit"
+			  :class "button-preview"
+			  :style "cursor:pointer"
+			  :value "Publish-->>"
+			  :onmouseover (ps (submit_mouseover "idsubmit"))
+			  :onmouseout  (ps (submit_mouseout "idsubmit"))
+			  ;;nuestra siguiente accion manda los datos para el preview a el main component con su instancia en cada slot.
+			  :action(call-component $body (make-instance 'cms-pages-workflow-ikkiware
+								      :cms-pages-menu-contextual-ikkiware (make-instance 'menu-contextual-vista-pagina
+															 :id-page id-page)
+								      :page-content-ikkiware (make-instance 'show-page-component
+													    :id-page id-page)
+								      :page-footer-ikkiware (make-instance'pies)))))))) 
+
+;;-----> Funcion que muestra el id y el nombre de la db. nos muestra el menu de la pagina ikkiware
+(defun get-all-pages-for-menu ()
+  (let ((page-data nil))
+    (db-disconnection)
+    (db-connection) 
+  ;; Asigna los valores a la variable y con la orden :order-by orden los componentes por su id_pag
+  (setf page-data (query (:order-by (:select 'id_pag 'nombre
+				  :from 'pag_ikki)
+				   'id_pag)))
+    (db-disconnection)
+    page-data)
+  )
+
+
+;;-----> funcion para mostrar el menu dinamicamente en forma de lista su id y su nombre
+
+(defun create-menu (id-page name-page)
+  (<:li
+   ;;la accion :title (write-to-string id-page) muestra el numero de id cada nombre: La accion nos manda a otro componente para mostrar el contenido de cada id y nombre
+   (<ucw:a :title (write-to-string id-page) :action (show-cont id-page) (<:as-html name-page))))
+
+
+;;-----> Funcion que muestra el contenido con el id-page y muestra los datos en su variable
+
+
+(defun get-page-content (id-page)
+  (let ((page-data-con nil))
+    (db-disconnection)
+    (db-connection)  
+    ;; Hace un select para mostrar el contenido atravez del id_pag seleccionado y mediante car extrae el contenido para mostrarlo en un elemento select
+    (setf page-data-con (query (:select 'contenido
+				:from 'pag_ikki
+				:where (:= 'id_pag id-page))))
+    (db-disconnection) 
+    (car (car page-data-con))))
+
+;;;----->>>
+(defun create-menu2 (id-page name-page)
+  (<:li            
+   (<ucw:a :title (write-to-string id-page) :action (show-cont2 id-page) (<:as-html name-page))))
+
+;; (call-as-window 'ikkiware-view)
+;;

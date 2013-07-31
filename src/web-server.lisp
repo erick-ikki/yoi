@@ -78,7 +78,6 @@
   (when id 
     (setf $topic-id id))
 
-
   (if $topic-id      
       (progn
 	(if (equal (read-from-string (read-first-line-file "configfiles/layout.dat")) 1)
@@ -112,7 +111,7 @@
        (call 'blog-window :stylesheet *style* )
        (call 'login :stylesheet *style* )))
 
-(defcomponent login (standard-window-component )
+(defcomponent login (standard-window-component)
   ()
   (:default-initargs 
    :body (make-instance 'login-post)

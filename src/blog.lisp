@@ -8,7 +8,7 @@
 (defentry-point "^(index.ucw|)$"  (:application *blog*
 				   :class regexp-dispatcher)
 		()
-  (if (equal (read-from-string (read-first-line-file "configfiles/layout.dat")) 1)
+  (if (equal (read-from-string (read-first-line-file "configfiles/layout.dat")) 1)  ;;second-------->
       (progn
 	(setf *style* 	(list (concatenate 'string 
 					   "static/"
@@ -19,6 +19,9 @@
 							(read-first-line-file "configfiles/layout-css.dat")))))
 	
 	(call 'blog-window-head-2col-footer :stylesheet *style*))
+      ;;;;---------------------------->
+      
+      ;;;;---------------------------->
       (progn
 	(setf *style* 	(list (concatenate 'string 
 					   "static/"
@@ -32,7 +35,7 @@
 
 ;;; Se crea un compoente para la aplicacion del blog, este componente hereda de "standard-window-component"
 
-(defcomponent blog-window (standard-window-component )
+(defcomponent blog-window (standard-window-component)
   ()
   (:default-initargs 
    ;; El el slot >> body << del componente se crea una instancia del componente "main-componente"
@@ -40,14 +43,14 @@
    ;; Se le pone un titulo a la pagina.
    :title "My Blog"
    ;; Se incluye la ruta del archivo "blog.css" de la hoja de estilo.
-   :stylesheet '("static/blog.css")
+   :stylesheet '("static/css-layout1/fixed-blog-blue.css")
    ;; Se incluye la ruta del archivo "parenscript.js" para las funciones de javascript.
    :javascript
    '((:src  "static/parenscript.js"))))
 
 
 
-;;;; Defincion del componente principal "main-component"
+;;;; Definicion del componente principal "main-component"
 
 (defcomponent main-component ()
   ;; Se crea un slot llamado titulo y se almacena el componente titulo-component.

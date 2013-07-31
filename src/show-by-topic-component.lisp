@@ -21,6 +21,7 @@
 					       'post_author
 					       'update_time
 				       :from 'topic_posts
+				       
 				       :where (:= 'topic_id (topic-id sby))) 
 			    (idpost titulo  resumen autor fecha)
 			  (show-abstract idpost titulo resumen autor (my-date fecha)))

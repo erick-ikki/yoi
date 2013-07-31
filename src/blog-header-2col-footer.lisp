@@ -4,7 +4,7 @@
 
 ;;; Se crea un compoente para la aplicacion del blog, este componente hereda de "standard-window-component"
 
-(defcomponent blog-window-head-2col-footer (standard-window-component )
+(defcomponent blog-window-head-2col-footer (standard-window-component)
   ()
   (:default-initargs 
    ;; El el slot >> body << del componente se crea una instancia del componente "main-componente"
