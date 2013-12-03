@@ -8,15 +8,12 @@
   (<:form  
    (<:div :id "contentwrap"
 	  (<:div :id "content"
-		 (db-disconnection)
-		 (db-connection) ; Se realiza la conexion a la base de datos
 		 ;; Se ejecuta un select a la base de datos con los ultimos 5 post ordenados descendentemente
-		 (doquery   (:limit   (:order-by   (:select 'tpost_id
-							    'post_name 
-							    'post_abstract
-							    'post_author
-							    'update_time
-						    :from 'topic_posts ) (:desc 'update_time) ) 5 ) 
-		     (idpost titulo  resumen autor fecha)
-		   (show-abstract idpost titulo resumen autor (my-date fecha)))
-		 (db-disconnection))))) ; Se realiza la desconexion de la base de datos
+		 (with-database (doquery   (:limit   (:order-by   (:select 'tpost_id
+									   'post_name 
+									   'post_abstract
+									   'post_author
+									   'update_time
+								   :from 'topic_posts ) (:desc 'update_time) ) 5 ) 
+				    (idpost titulo  resumen autor fecha)
+				  (show-abstract idpost titulo resumen autor (my-date fecha)))))))) ; Se realiza la desconexion de la base de datos

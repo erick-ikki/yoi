@@ -25,21 +25,17 @@
 					      (<ucw:a :class "amenu"
 						      :action (call-component $contenido (make-instance 'show-all-abstract)) "Home"))
 
-					(db-disconnection)
-					(db-connection)
-					
-					(doquery (:select 'topic_id
-							  'topic_name
-							  :from 'topics)
-					    (topic-id topic-name)
-					  (<:li :class "limenu" 
-						(<ucw:a :class "amenu"
-							:action
-							(call-component
-							 $contenido 
-							 (make-instance
-							  'show-by-topic :topic-id topic-id)) (<:as-html topic-name ) )))
-					(db-disconnection)
+					(with-database (doquery (:select 'topic_id
+									 'topic_name
+									 :from 'topics)
+							   (topic-id topic-name)
+							 (<:li :class "limenu" 
+							       (<ucw:a :class "amenu"
+								       :action
+								       (call-component
+									$contenido 
+									(make-instance
+							  'show-by-topic :topic-id topic-id)) (<:as-html topic-name ) ))))
 					
 ;;;;;;;;;;;;;
 					(if (logged-in)

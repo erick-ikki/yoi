@@ -15,20 +15,17 @@
    (<:div :id "wrapper"
 	  (<:div :id "contentwrap"
 		 (<:div :id "content"
-			(db-disconnection)
-			(db-connection) ; Se conecta a la base de datos
 ;; Se ejecuta el query para seleccionar el post con el id asociado
-			(doquery   (:select 'tpost_id
-					    'post_name
-					    'post 
-					    'post_author
-					    'creation_time 
-				    :from 'topic_posts
+			(with-database (doquery   (:select 'tpost_id
+							   'post_name
+							   'post 
+							   'post_author
+							   'creation_time 
+						   :from 'topic_posts
 				    :where (:= 'tpost_id (showpost a)))
-			    (idpost titulo  contenido autor fecha)
-;; La informacion encontrada en la base de datos se envia a la funcion show-post
-			  (show-post idpost titulo contenido autor (my-date fecha)))
-			(db-disconnection)) ))))
+					   (idpost titulo  contenido autor fecha)
+					 ;; La informacion encontrada en la base de datos se envia a la funcion show-post
+					 (show-post idpost titulo contenido autor (my-date fecha)))))))))
 
 
 
@@ -40,10 +37,8 @@
    (<:div :id "wrapper"
 	  (<:div :id "contentwrap"
 		 (<:div :id "content"
-			(db-disconnection)
-			(db-connection) ; Se conecta a la base de datos
-;; Se ejecuta el query para seleccionar el post con el id asociado
-			(doquery   (:select 'tpost_id
+			;; Se ejecuta el query para seleccionar el post con el id asociado
+			(with-database (doquery   (:select 'tpost_id
 					    'post_name
 					    'post 
 					    'post_author
@@ -52,6 +47,5 @@
 				    :where (:= 'tpost_id (id)))
 			    (idpost titulo  contenido autor fecha)
 ;; La informacion encontrada en la base de datos se envia a la funcion show-post
-			  (show-post idpost titulo contenido autor (my-date fecha)))
-			(db-disconnection)) ) )))
+			  (show-post idpost titulo contenido autor (my-date fecha)))))))))
 

@@ -30,15 +30,13 @@
 					    (<:as-html "Category : ")
 					    (<ucw:select :accessor category 
 							 :class "inputaddpost"
-							 (db-disconnection)
-							 (db-connection) ; Se realiza la conexion a la base de datos
-;; Se ejecuta el query para ver las temas del post en un objeto select
-							 (doquery (:select 'topic_id 
-									   'topic_name
-									   :from 'topics)
-							     (topic-id topic-name)
-							   (<ucw:option :value topic-id  (<:as-html topic-name ))) )
-					    (db-disconnection)
+							 
+							 ;; Se ejecuta el query para ver las temas del post en un objeto select
+							 (with-database (doquery (:select 'topic_id 
+											  'topic_name
+											  :from 'topics)
+									    (topic-id topic-name)
+									  (<ucw:option :value topic-id  (<:as-html topic-name )))))
 					    (<:br)
 					    (<:as-html "Title : ")
 					    (<:&nbsp) (<:&nbsp) (<:&nbsp) (<:&nbsp) (<:&nbsp) (<:&nbsp) (<:&nbsp) (<:&nbsp) 
@@ -78,10 +76,10 @@
 							  :onmouseout  (ps (submit_mouseout "idaddpost"))
 ;; Se envia la informacion del nuevo post a la accion "add-post" para que se almacene en la base de datos.
 							  :action (add-post category
-									       (my-date (get-universal-time)) ; Se obtine la hora actual en formato aaaa/mm/dd
-									       (my-date (get-universal-time)) ; Se obtine la hora actual en formato aaaa/mm/dd
-									       title
-									       author
+									    (my-date (get-universal-time)) ; Se obtine la hora actual en formato aaaa/mm/dd
+									    (my-date (get-universal-time)) ; Se obtine la hora actual en formato aaaa/mm/dd
+									    title
+									    author
 									       summary
 									       1
 									       post))
@@ -103,12 +101,12 @@
 												 :preview-add-post post
 												 :preview-add-creation-time  (get-universal-time))))))))))))))
 #|
- Se define un componente que contiene el formulario para agregar un nuevo post, es decir contiene campos como:
- cajas de texto para ingresar el titulo, autor, un resumen y el post, además contiene 2 botones uno para 
- guardar o publicar el post  y el otro para ver la vista previa.
+Se define un componente que contiene el formulario para agregar un nuevo post, es decir contiene campos como:
+cajas de texto para ingresar el titulo, autor, un resumen y el post, además contiene 2 botones uno para 
+guardar o publicar el post  y el otro para ver la vista previa.
 
- >> Botón de publiar, aquí se hace uso de la acción "add-post" que es la que se encarga de guardar la información
- >> Botón de vista previa, aquí se crea una instancia de "preview-add-post-component" a la cual se le pasa la información del
- post para que sea generada la vista previa.
- La funcion  (get-universal-time) nos da la fecha actual en formato apoch
+>> Botón de publiar, aquí se hace uso de la acción "add-post" que es la que se encarga de guardar la información
+>> Botón de vista previa, aquí se crea una instancia de "preview-add-post-component" a la cual se le pasa la información del
+post para que sea generada la vista previa.
+La funcion  (get-universal-time) nos da la fecha actual en formato apoch
 |#

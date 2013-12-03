@@ -46,14 +46,11 @@
 				      (<:as-html "Category : ")
 				      (<ucw:select :accessor edit-category 
 						   :class "inputaddpost"
-						   (db-disconnection)
-						   (db-connection)
-						   (doquery (:select 'topic_id
+						   (with-database (doquery (:select 'topic_id
 								     'topic_name
 								     :from 'topics)
 						       (topic-id topic-name)
-						     (<ucw:option :value topic-id  (<:as-html topic-name ))))
-				      (db-disconnection)
+						     (<ucw:option :value topic-id  (<:as-html topic-name )))))
 				      (<:br)
 				      (<:as-html "Title : ")
 				      (<ucw:input :type "text" 
