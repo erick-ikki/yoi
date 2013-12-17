@@ -8,11 +8,11 @@
   ()
   (:default-initargs 
    ;; El el slot >> body << del componente se crea una instancia del componente "main-componente"
-   :body (make-instance 'blog-head-2col-footer)
+   :body (make-instance 'main-component)
    ;; Se le pone un titulo a la pagina.
    :title "My Blog"
    ;; Se incluye la ruta del archivo "blog.css" de la hoja de estilo.
-   :stylesheet '("static/fixed-blog-blue-layout1.css")
+   :stylesheet '("static/fixed-blog-blue-layout1.css" "wwwroot/inicio.css")
    ;; Se incluye la ruta del archivo "parenscript.js" para las funciones de javascript.
    :javascript
    '((:src  "static/parenscript.js"))))

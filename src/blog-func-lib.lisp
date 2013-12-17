@@ -37,33 +37,33 @@
 	  (<:as-html (format nil "ID  [ ~A ]" id   ))
 	  ;; Esta accion genera un liga par leer el post completo
 
-	  (<:a :href (concatenate 'string "/showpost.ucw?id=" (write-to-string id)) "Read more..."))))
+	  (<:a :href (concatenate 'string "/showpost.ucw?id=" (write-to-string id)) "Read more...")))
 
 
 ;;; Funcion que muestra el post 
 
-(defun show-post (id title post author date)
+  (defun show-post (id title post author date)
   
-  (<:div :id "post1"
-	 (<:div :class "posttitle" 
-		(<:br)
-		;; En este span se pone el titulo del post
-		(<:span :class "sptitle"			
+    (<:div :id "post1"
+	   (<:div :class "posttitle" 
+		  (<:br)
+		  ;; En este span se pone el titulo del post
+		  (<:span :class "sptitle"			
 			  (<:as-html (format nil "~A" title  )) ))
-	 ;; En este parrafo se pone el post	   
-	 (<:div (<:as-is (format nil "~a" post  )))
-	 ;; En este parrafo se pone el autor
-	 (<:p :class "postauthor"
-	      (<:as-html (format nil "Author: ~A" author   )))
-	 ;; En este parrafo se pone el fecha de creacion
-	 (<:div :class "postdate"
-		(<:as-html (format nil "Date: ~A" date   )))
+	   ;; En este parrafo se pone el post	   
+	   (<:div (<:as-is (format nil "~a" post  )))
+	   ;; En este parrafo se pone el autor
+	   (<:p :class "postauthor"
+		(<:as-html (format nil "Author: ~A" author   )))
+	   ;; En este parrafo se pone el fecha de creacion
+	   (<:div :class "postdate"
+		  (<:as-html (format nil "Date: ~A" date   )))
 	   ;; En este parrafo se pone el id
-	 (<:p 
-	  (<:as-html (format nil "ID  [ ~A ]" id   ))
-	  (<:h2  :style "text-align: center;"
+	   (<:p 
+	    (<:as-html (format nil "ID  [ ~A ]" id   ))
+	    (<:h2  :style "text-align: center;"
 		   (<ucw:a :action (call-component $contenido (make-instance 'show-all-abstract)) "Back")
-		   (<:br))))) 
+		   (<:br)))))) 
 
 
 ;;;  Funcion que realiza el preview del post al editar un post

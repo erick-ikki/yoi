@@ -6,11 +6,11 @@
   (let ((usr1 nil)
         (pwd1 nil))
     ;; Se ejecuta el query para seleccionar el usuario y contraseña
-    (with-database (doquery (:select 'user 'password
-                      :from 'login
+    (with-database (doquery (:select 'name 'password
+                      :from 'users
                       :where
                       (:and
-                       (:= 'user iduser)
+                       (:= 'name iduser)
                        (:= 'password password)))
         (usr pwd)
       (setf usr1 usr)

@@ -7,3 +7,4 @@
    IN: query that representing the users' query
    OUT: result of the query"
   `(postmodern:with-connection *db-parameters* ,@ query))
+
