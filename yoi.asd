@@ -16,7 +16,7 @@
 			     (:file "symbol-macro" :depends-on ("package"))
 			     (:file "blog-func-lib" :depends-on ("package"))
 			     (:file "web-server" :depends-on ("package"))
-			     (:file "db-connection-disconnection" :depends-on ("package"))
+			     (:file "with-database")
 			     (:file "blog")
 			     (:file "menu-componente")
 			     (:file "agregar-post")

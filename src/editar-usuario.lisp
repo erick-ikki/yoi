@@ -1,6 +1,4 @@
 
-
-
 (in-package #:ws.ikki.yoi)
 
 (defcomponent found-post-component ()
@@ -22,10 +20,10 @@
    (xpost :initform 0 
 	  :accessor xpost
 	  :initarg :xpost )
-
+   
    (creation-time :initform 0 
 	  :accessor creation-time
-	  :initarg :creation-time )))
+		  :initarg :creation-time )))
 
 (defmethod render :wrapping ((s found-post-component ))
   (let ((edit-category "")
@@ -46,14 +44,11 @@
 				      (<:as-html "Category : ")
 				      (<ucw:select :accessor edit-category 
 						   :class "inputaddpost"
-						   (db-disconnection)
-						   (db-connection)
-						   (doquery (:select 'topic_id
-								     'topic_name
-								     :from 'topics)
-						       (topic-id topic-name)
-						     (<ucw:option :value topic-id  (<:as-html topic-name ))))
-				      (db-disconnection)
+						   (with-database (doquery (:select 'topic_id
+										    'topic_name
+										    :from 'topics)
+								      (topic-id topic-name)
+								    (<ucw:option :value topic-id  (<:as-html topic-name )))))
 				      (<:br)
 				      (<:as-html "Title : ")
 				      (<ucw:input :type "text" 
@@ -90,7 +85,7 @@
 						    :onmouseover (ps (submit_mouseover "idsavepost"))
 						    :onmouseout  (ps (submit_mouseout "idsavepost"))
 						    :action (edit-post-update (tpost-id s) edit-category edit-title edit-author edit-summary edit-post ))
-
+				      
 				      (<ucw:submit  :id "idepreviewpost"
 						    :class "inputaddpost"
 						    :style "cursor:pointer"

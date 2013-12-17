@@ -1,7 +1,5 @@
 (in-package #:ws.ikki.yoi)
 
-(db-connection)
-
 (deftable login 
   (:create-table login
 		 ((id_user 
@@ -14,7 +12,7 @@
 		  (password 
 		   :type (varchar 50)))))
 
-(create-table 'login)
+(with-database (create-table 'login))
 
 
 (deftable topics
@@ -34,7 +32,7 @@
 		  (topic_update
 		  :type timestamp))))
 
-(create-table 'topics)
+(with-database (create-table 'topics))
 
 (deftable topic_posts
   (:create-table topic_posts
@@ -61,7 +59,7 @@
 		  (update_time
 		  :type timestamp))))
 
-(create-table 'topic_posts)
+(with-database (create-table 'topic_posts))
 
 (deftable topic_comments
   (:create-table topic_comments
@@ -81,6 +79,6 @@
 		  :type timestamp))
 		 (:foreign-key (post_id) (topic_posts tpost_id))))
 
-(create-table 'topic_comments)
+(with-database (create-table 'topic_comments))
 
-(db-disconnection)
+

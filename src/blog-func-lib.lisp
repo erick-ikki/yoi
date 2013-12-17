@@ -36,13 +36,14 @@
 	 (<:p
 	  (<:as-html (format nil "ID  [ ~A ]" id   ))
 	  ;; Esta accion genera un liga par leer el post completo
-	  (<ucw:a :action (view-post-alone id) "Read more . . ."))))
+
+	  (<:a :href (concatenate 'string "/showpost.ucw?id=" (write-to-string id)) "Read more...")))
 
 
 ;;; Funcion que muestra el post 
 
-(defun show-post (id title post author date)
-  (let ((bookmark-link nil))
+  (defun show-post (id title post author date)
+  
     (<:div :id "post1"
 	   (<:div :class "posttitle" 
 		  (<:br)
@@ -62,10 +63,7 @@
 	    (<:as-html (format nil "ID  [ ~A ]" id   ))
 	    (<:h2  :style "text-align: center;"
 		   (<ucw:a :action (call-component $contenido (make-instance 'show-all-abstract)) "Back")
-		   (<:br))
-	    (setf bookmark-link (concatenate 'string "/showpost.ucw?id=" (write-to-string id)))
-	    
-	    (<:a :href  bookmark-link  "Link bookmark: "))))) 
+		   (<:br)))))) 
 
 
 ;;;  Funcion que realiza el preview del post al editar un post
